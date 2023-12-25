@@ -3,5 +3,5 @@ WORKDIR /app
 COPY . .
 RUN go mod init main
 RUN go build -o main .
-ENTRYPOINT ["./main"]
+ENTRYPOINT ["/main"]
 EXPOSE 8080
