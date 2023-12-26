@@ -1,5 +1,4 @@
 FROM golang:latest AS builder
-
 WORKDIR /go/src/app
 COPY . .
 RUN go build -o main
