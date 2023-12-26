@@ -1,7 +1,10 @@
-FROM golang:latest
+FROM golang:latest AS builder
 
-WORKDIR /app
+WORKDIR /go/src/app
 COPY . .
-RUN go build -o main /app
-CMD ["./main"]
-EXPOSE 8080
+RUN go build -o main
+
+FROM scratch
+WORKDIR .
+COPY --from=builder go/src/app/main .
+ENTRYPOINT ["./main"]
